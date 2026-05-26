@@ -1,0 +1,9 @@
+{
+  "endpoint": "https://dnavatar.org/deploy.php",
+  "target": "pages/utf8",
+  "files": [
+    { "src": "_utf8/_utf8-display.html",  "dest": "index.html" },
+    { "src": "_utf8/utf8_search_fr.js",   "dest": "utf8_search_fr.js" },
+    { "src": "_utf8/utf8_search_usa.js",  "dest": "utf8_search_usa.js" }
+  ]
+}

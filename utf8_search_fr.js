@@ -1628,12 +1628,17 @@ function getEmojiKeywords(emoji) {
     return emojiKeywords[emoji] || [];
 }
 
-// Fonction helper pour rechercher des emojis par mot-clé
+// Normalise : minuscules + suppression des accents (NFD)
+function normalizeStr(s) {
+    return s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
+}
+
+// Fonction helper pour rechercher des emojis par mot-clé (accent-insensible)
 function searchEmojisByKeyword(keyword) {
     const results = [];
-    const lowerKeyword = keyword.toLowerCase();
+    const normKeyword = normalizeStr(keyword);
     for (const [emoji, keywords] of Object.entries(emojiKeywords)) {
-        if (keywords.some(k => k.toLowerCase().includes(lowerKeyword))) {
+        if (keywords.some(k => normalizeStr(k).includes(normKeyword))) {
             results.push(emoji);
         }
     }
